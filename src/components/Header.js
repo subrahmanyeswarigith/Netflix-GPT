@@ -7,10 +7,11 @@ import { useSelector } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
-
+import { toggleGptSerchView } from "../utils/gptSlice";
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const user = useSelector((store) => store.user);
   const handleSignout = () => {
     signOut(auth)
@@ -45,12 +46,22 @@ const Header = () => {
     return () => unsubsribe();
   }, []);
 
+  const handleGptSearch = () => {
+    dispatch(toggleGptSerchView());
+  };
+
   return (
     <div className="absolute flex justify-between px-8 py-2 bg-gradient-to-b from-black z-10 w-full">
       <img src={LOGO} alt="logo" className="w-44 " />
       {user && (
         <>
           <div className="flex items-center">
+            <button
+              className="py-2  px-4 mr-[680px] bg-white  text-black rounded-md font-semibold"
+              onClick={handleGptSearch}
+            >
+              GPT Search
+            </button>
             <img
               src={USER_AVATAR}
               alt="usericon"

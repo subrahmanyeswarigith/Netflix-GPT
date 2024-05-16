@@ -2,7 +2,7 @@ import React from "react";
 import play from "../assets/play.png";
 const VideoTitle = ({ title, overview }) => {
   return (
-    <div className="pt-[20%] w-screen aspect-video h-full  px-24 absolute bg-gradient-to-r from-black">
+    <div className="pt-[20%] w-screen aspect-video h-screen  px-24 absolute bg-gradient-to-r from-black">
       <div>
         <div className="text-6xl font-bold text-white w-1/3">{title}</div>
         <div className="w-1/3 py-6 text-lg text-white">{overview}</div>
